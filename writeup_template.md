@@ -25,6 +25,7 @@
 [image10]: ./misc/matplotlib.png
 [image11]: ./misc/processing.png
 [image2]: ./misc/output.png
+[image3]: ./misc/final_output.png
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/916/view) Points
 ### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
@@ -55,14 +56,26 @@ After verifying that all functions produce desirable output, it's time to popula
 ### Autonomous Navigation and Mapping
 
 #### 1. Fill in the `perception_step()` (at the bottom of the `perception.py` script) and `decision_step()` (in `decision.py`) functions in the autonomous mapping scripts and an explanation is provided in the writeup of how and why these functions were modified as they were.
+The functions used in the Notebook Analysis steps are available perception.py. The task remaining used to combine them as we did process_image(). The data was accessed using the Rover object.
 
+One issue I was facing was that though the code looked correct the rover was behaving as expected.Poor fidelity. After going throught the discussion forum I realised that the issue was because of the camera Calibration. it was done at a particular value of the gyroscope and when the rover moved on exteme terrains the logic of perception failed.
 
+Finally by trial and error I added condition to check if roll and pitch was in particular range before passing image to worldmap.This improved the fidelity many folds.
+      "
+      if roll <= 0.7 or roll >= 359.5:
+            if pitch <= 0.7 or pitch >= 359.5:
+              pass
+      "
 
 #### 2. Launching in autonomous mode your rover can navigate and map autonomously.  Explain your results and how you might improve them in your writeup.  
 
 **Note: running the simulator with different choices of resolution and graphics quality may produce different results, particularly on different machines!  Make a note of your simulator settings (resolution and graphics quality set on launch) and frames per second (FPS output to terminal by `drive_rover.py`) in your writeup when you submit the project so your reviewer can reproduce your results.**
 
 Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+
+One of the possible reason for the pipeline to fail is if the enviroment changes. That is if the threshold levels for terrain,obstacles and rocks change. One solution can to add Calibration for these as well along with camera. Using deep learning based segmentation can be more helpful in real world applications.
+
+I used Ubuntu 18.10 and did not find any option to change the resolution. I have used the default settings
 
 
 
