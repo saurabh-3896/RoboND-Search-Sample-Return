@@ -39,7 +39,7 @@ You're reading it!
 
 ### Notebook Analysis
 #### 1. Run the functions provided in the notebook on test images (first with the test data provided, next on data you have recorded). Add/modify functions to allow for color selection of obstacles and rock samples.
-The default notebook gives a good idea of what to modify and add. Firstly, I modified the color_thresh function to threshold navigable terrain and obstacles using 'mode' flag. Alternative was to complement the navigable terrain. The interactive mode of matplotlib allowed to fing the RGB color ranges for terrain, obstacles and rocks.
+The default notebook gives a good idea of what to modify and add. Firstly, I modified the color_thresh function to threshold navigable terrain and obstacles inverting the threshold values. Alternative was to complement the navigable terrain. The interactive mode of matplotlib allowed to fing the RGB color ranges for terrain, obstacles and rocks.
 
 ![alt text][image10]
 
